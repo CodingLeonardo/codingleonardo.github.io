@@ -5,7 +5,7 @@ const contents = JSON.stringify(
     return {
       name: certificado.name,
       src: certificado.src,
-      categories: certificado.categories,
+      categorie: certificado.categorie,
     };
   })
 );
