@@ -132,13 +132,13 @@
   <nav class="Header-nav">
     <ul>
       <li>
-        <a href="/certificados">Certificados</a>
+        <a href="/certificados/">Certificados</a>
       </li>
       <li>
-        <a href="/habilidades">Habilidades</a>
+        <a href="/habilidades/">Habilidades</a>
       </li>
       <li>
-        <a href="/proyectos">Proyectos</a>
+        <a href="/proyectos/">Proyectos</a>
       </li>
     </ul>
   </nav>
