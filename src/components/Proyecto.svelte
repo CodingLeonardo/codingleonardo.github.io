@@ -11,8 +11,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 18em;
-    height: 18em;
+    width: 100%;
+    height: 15em;
     margin: 0;
     perspective: 1000px;
   }
@@ -62,7 +62,7 @@
     align-items: center;
     bottom: 0;
     z-index: 10;
-    height: 20%;
+    height: 30%;
     width: 100%;
     background: white;
   }

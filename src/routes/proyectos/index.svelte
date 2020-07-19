@@ -23,8 +23,8 @@
   }
   .Proyectos-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5em;
     align-items: center;
     justify-items: center;
     width: 80%;
