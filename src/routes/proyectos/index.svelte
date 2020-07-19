@@ -15,6 +15,12 @@
 </script>
 
 <style>
+  .Proyectos h1 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1em;
+    font-size: 2.5em;
+  }
   .Proyectos-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -31,6 +37,7 @@
 </svelte:head>
 
 <div class="Proyectos">
+  <h1>Proyectos</h1>
   <div class="Proyectos-container">
     {#each proyectos as proyecto}
       <Proyecto
