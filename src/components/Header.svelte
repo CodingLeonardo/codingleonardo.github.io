@@ -18,6 +18,10 @@
     height: 15em;
     margin-top: 1em;
     margin-bottom: 0.5em;
+    transition: 0.5s;
+  }
+  .Header-profile__figure:hover {
+    box-shadow: 0 0 0.8em 0 rgba(0, 0, 0, 0.3);
   }
   .Header-profile__figure a {
     display: flex;
