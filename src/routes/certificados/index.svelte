@@ -1,21 +1,10 @@
-<script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`certificados.json`)
-      .then(r => r.json())
-      .then(certificados => {
-        return { certificados };
-      });
-  }
-</script>
-
 <script>
-  export let certificados;
-
   import Certificado from "../../components/Certificado.svelte";
   import Loader from "../../components/Loader.svelte";
   import IntersectionObserver from "../../components/IntersectionObserver.svelte";
   import { writable, readable } from "svelte/store";
-  // console.log(certificados);
+  import certificados from "./_certificados.js";
+  console.log(certificados);
 
   const certificadosFiltered = writable(certificados);
 

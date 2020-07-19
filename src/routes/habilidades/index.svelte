@@ -1,18 +1,8 @@
-<script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`habilidades.json`)
-      .then(r => r.json())
-      .then(habilidades => {
-        return { habilidades };
-      });
-  }
-</script>
-
 <script>
-  export let habilidades;
-  console.log(habilidades);
-
   import Habilidad from "../../components/Habilidad.svelte";
+
+  import habilidades from "./_habilidades.js";
+  console.log(habilidades);
 </script>
 
 <style>

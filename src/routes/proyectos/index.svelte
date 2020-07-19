@@ -1,17 +1,8 @@
-<script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`proyectos.json`)
-      .then(r => r.json())
-      .then(proyectos => {
-        return { proyectos };
-      });
-  }
-</script>
-
 <script>
-  export let proyectos;
-
   import Proyecto from "../../components/Proyecto.svelte";
+
+  import proyectos from "./_proyectos.js";
+  console.log(proyectos);
 </script>
 
 <style>
