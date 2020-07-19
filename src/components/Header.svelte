@@ -121,7 +121,7 @@
   <div class="Header-profile">
     <figure class="Header-profile__figure">
       <a href="/">
-        <img src="Leonardo.jpg" alt="" />
+        <img src="https://i.imgur.com/QMReBAh.jpg" alt="" />
       </a>
     </figure>
     <div class="Header-profile__info">
