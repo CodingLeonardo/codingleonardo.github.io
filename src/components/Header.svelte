@@ -27,12 +27,13 @@
     width: 100%;
   }
   .Header-profile__info h1 {
-    font-size: 2.2em;
+    font-size: 2.5em;
     letter-spacing: -0.01em;
     font-weight: bold;
+    margin-bottom: 0.2em;
   }
   .Header-profile__info span {
-    font-size: 0.8em;
+    font-size: 1em;
   }
   .Header-nav {
     display: flex;
