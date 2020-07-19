@@ -12,6 +12,8 @@
   export let certificados;
 
   import Certificado from "../../components/Certificado.svelte";
+  import Loader from "../../components/Loader.svelte";
+  import IntersectionObserver from "../../components/IntersectionObserver.svelte";
   import { writable, readable } from "svelte/store";
   // console.log(certificados);
 
@@ -102,10 +104,16 @@
   </div>
   <div class="Certificados-container">
     {#each $certificadosFiltered as certificado}
-      <Certificado
-        name={certificado.name}
-        src={certificado.src}
-        categories={certificado.categories} />
+      <IntersectionObserver let:intersecting once bottom={400}>
+        {#if intersecting}
+          <Certificado
+            name={certificado.name}
+            src={certificado.src}
+            categories={certificado.categories} />
+        {:else}
+          <Loader />
+        {/if}
+      </IntersectionObserver>
     {:else}
       <h1>Loading....</h1>
     {/each}
