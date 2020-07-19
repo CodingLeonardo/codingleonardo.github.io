@@ -60,6 +60,10 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    transition: 0.4s;
+  }
+  .Header-nav a:hover {
+    transform: scale(1.1);
   }
   .Header-social {
     position: absolute;
