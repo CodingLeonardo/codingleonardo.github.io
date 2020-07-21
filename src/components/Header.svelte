@@ -96,24 +96,28 @@
     <a
       href="https://www.facebook.com/CodingLeonardo"
       target="_blank"
+      rel="noopener"
       class="Header-social__link">
       <img src="./images/facebook.svg" alt="" />
     </a>
     <a
       href="https://www.twitter.com/CodingLeonardo"
       target="_blank"
+      rel="noopener"
       class="Header-social__link">
       <img src="./images/twitter.svg" alt="" />
     </a>
     <a
       href="https://www.instagram.com/codingleonardo/"
       target="_blank"
+      rel="noopener"
       class="Header-social__link">
       <img src="./images/instagram.svg" alt="" />
     </a>
     <a
       href="https://github.com/CodingLeonardo"
       target="_blank"
+      rel="noopener"
       class="Header-social__link">
       <img src="./images/github.svg" alt="" />
     </a>
