@@ -1,6 +1,5 @@
 <script>
   import Certificado from "../../components/Certificado.svelte";
-  import Loader from "../../components/Loader.svelte";
   import IntersectionObserver from "../../components/IntersectionObserver.svelte";
   import { writable, readable } from "svelte/store";
   import certificados from "./_certificados.js";
@@ -93,7 +92,7 @@
   </div>
   <div class="Certificados-container">
     {#each $certificadosFiltered as certificado}
-      <IntersectionObserver let:intersecting once bottom={400}>
+      <!-- <IntersectionObserver let:intersecting once bottom={400}>
         {#if intersecting}
           <Certificado
             name={certificado.name}
@@ -102,7 +101,11 @@
         {:else}
           <Loader />
         {/if}
-      </IntersectionObserver>
+      </IntersectionObserver> -->
+      <Certificado
+        name={certificado.name}
+        src={certificado.src}
+        categories={certificado.categories} />
     {:else}
       <h1>Loading....</h1>
     {/each}

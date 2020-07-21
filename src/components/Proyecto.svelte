@@ -3,6 +3,12 @@
   export let description;
   export let src;
   export let href;
+
+  let loaded = false;
+
+  function load(img) {
+    img.onload = () => (loaded = true);
+  }
 </script>
 
 <style>
@@ -15,6 +21,8 @@
     height: 15em;
     margin: 0;
     perspective: 1000px;
+    transition: 0.5s;
+    opacity: 0;
   }
   .Proyecto-inner {
     position: relative;
@@ -80,16 +88,19 @@
   .Proyecto-description p {
     font-weight: bold;
   }
+  .loaded {
+    opacity: 1;
+  }
 </style>
 
-<a {href} class="Proyecto" target="_blank">
+<a {href} class="Proyecto" class:loaded target="_blank">
   <div class="Proyecto-inner">
     <div class="Proyecto-front">
       <div class="Proyecto-title">
         <h1>{name}</h1>
       </div>
       <div class="Proyecto-image">
-        <img {src} alt={name} />
+        <img use:load {src} alt={name} />
       </div>
     </div>
     <div class="Proyecto-back">
