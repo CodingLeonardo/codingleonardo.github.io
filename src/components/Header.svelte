@@ -121,7 +121,7 @@
   <div class="Header-profile">
     <figure class="Header-profile__figure">
       <a href="/">
-        <img src="https://i.imgur.com/QMReBAh.jpg" alt="" />
+        <img src="images/Leonardo.jpg" alt="Leonardo Rivero" />
       </a>
     </figure>
     <div class="Header-profile__info">
