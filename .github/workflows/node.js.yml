@@ -1,4 +1,4 @@
-name: Build and Deploy
+ame: Build and Deploy
 on:
   push:
     branches:
@@ -9,21 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12"
+        uses: actions/checkout@v1
 
       - name: Clean Install dependencies and Build
         run: |
-          npm install
+          yarn install
           rm -rf __sapper__
-          npm predeploy
+          yarn predeploy
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: master
+          BRANCH: gh-pages
           FOLDER: "__sapper__/export"
 
       - name: Archive production artifacts
