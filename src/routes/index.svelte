@@ -22,10 +22,10 @@
 <div class="Home">
   <h1>Un Poco Sobre mi</h1>
   <p>
-    Hola soy Leonardo!, tengo 14 años de edad, soy estudiante de platzi, tengo
-    24 cursos y 2 Carreras aprobadas en platzi, la mayoria de los cursos que eh
-    aprobado son de Desarrollo Frontend, pero tambien de Diseño, Marketing y
-    Crecimiento Profesional.
+    Tengo 14 años 👦🏻, soy un desarrollador frontend 🚀, me apasiona el
+    desarrollo frontend, me encanta explorar nuevas tecnologías 💡. Me gusta
+    resolver problemas y usar mis aplicaciones para resolver problemas de la
+    vida real ✨. Siempre me encuentro aprendiendo algo nuevo 💚.
   </p>
   <h2>Asi fue como comence a desarrollar</h2>
   <p>
