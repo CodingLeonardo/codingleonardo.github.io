@@ -13,14 +13,14 @@ jobs:
 
       - name: Clean Install dependencies and Build
         run: |
-          yarn install
+          npm install
           rm -rf __sapper__
-          yarn predeploy
+          npm predeploy
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
+          BRANCH: master
           FOLDER: "__sapper__/export"
 
       - name: Archive production artifacts
