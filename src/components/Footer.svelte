@@ -4,45 +4,25 @@
 
 <style>
   .Footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 4em;
-    background: #eaeaea;
-  }
-  .Footer-message,
-  .Footer-powered {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: inherit;
+    flex-direction: column;
+    height: 4em;
+    bottom: 0;
+    color: #002e02;
+    background: #80f08b;
   }
-  .Footer-message h1 {
-    font-size: 1.2em;
-  }
-  .Footer-message a {
-    font-weight: bold;
-  }
-  .Footer-powered {
-    font-size: 1.2em;
-  }
-  .Footer-powered img {
-    height: 2.2em;
-    margin-left: 0.8em;
+  .Footer span {
+    font-weight: 900;
+    font-size: 18px;
   }
 </style>
 
 <footer class="Footer">
-  <div class="container">
-    <div class="Footer-message">
-      <h1>
-        Diseñado con 💚 por
-        <a href="https://github.com/CodingLeonardo">@CodingLeonardo</a>
-      </h1>
-    </div>
-    <div class="Footer-powered">
-      Impulsado por
-      <img src="/images/svelte-logo.svg" alt="" />
-    </div>
-  </div>
+  <span>Hecho con 💚</span>
+  <span>© 2020 Leonardo Rivero</span>
 </footer>

@@ -6,17 +6,13 @@
 </script>
 
 <style>
-  main {
-    padding: 2em 0;
-  }
+
 </style>
 
 <Header {segment} />
 
 <main>
-  <div class="container">
-    <slot />
-  </div>
+  <slot />
 </main>
 
 <Footer />
