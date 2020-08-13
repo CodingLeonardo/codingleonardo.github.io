@@ -5,7 +5,7 @@
 <style>
   .Footer {
     position: absolute;
-    z-index: 10;
+    z-index: 2;
     width: 100%;
     display: flex;
     justify-content: center;
