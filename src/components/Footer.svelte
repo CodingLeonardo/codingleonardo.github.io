@@ -4,15 +4,12 @@
 
 <style>
   .Footer {
-    position: absolute;
-    z-index: 2;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 4em;
-    bottom: 0;
     color: #002e02;
     background: #80f08b;
   }
