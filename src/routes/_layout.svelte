@@ -7,7 +7,11 @@
 
 <style>
   .background {
-    background: linear-gradient(243.33deg, #80f08b 46.99%, #35cc44 99.77%);
+    background: linear-gradient(
+      120deg,
+      rgba(128, 240, 139, 1) 0%,
+      rgba(95, 223, 108, 1) 100%
+    );
     position: fixed;
     top: 0;
     right: 0;
