@@ -214,6 +214,12 @@
           <div class="Header-menu">
             <ul>
               <li>
+                <a href="/sobre-mi">
+                  Sobre mi
+                  <img src="./images/menu-arrow.svg" alt="" />
+                </a>
+              </li>
+              <li>
                 <a href="/certificados">
                   Certificados
                   <img src="./images/menu-arrow.svg" alt="" />
