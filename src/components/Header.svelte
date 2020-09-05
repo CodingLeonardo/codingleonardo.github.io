@@ -8,6 +8,11 @@
       OpenedMenu = true;
     }
   };
+  const handleClickOverlay = event => {
+    if (event.target.classList[0] === "Header-menu__overlay") {
+      OpenedMenu = false;
+    }
+  };
 </script>
 
 <style>
@@ -204,7 +209,7 @@
       class="Header-menu__container"
       class:show={OpenedMenu}
       class:hide={!OpenedMenu}>
-      <div class="Header-menu__overlay">
+      <div class="Header-menu__overlay" on:click={handleClickOverlay}>
         {#if OpenedMenu}
           <div class="Header-menu">
             <ul>
