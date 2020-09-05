@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 4.5em;
+    height: 5em;
     color: #002e02;
   }
   .Header-logo {
@@ -104,14 +104,20 @@
     right: 0;
     width: 30vw;
     height: 100vh;
-    background: #80f08b;
+    background: linear-gradient(
+      90deg,
+      rgba(127, 240, 138, 1) 0%,
+      rgba(196, 250, 113, 1) 100%
+    );
+    display: flex;
+    justify-content: center;
   }
   .Header-menu ul {
-    padding: 1em;
     padding-top: 6em;
     text-align: right;
   }
   .Header-menu ul li {
+    display: block;
     list-style: none;
     margin: 0.8em 0;
   }
@@ -122,10 +128,54 @@
   .Header-menu ul li a img {
     height: 0.7em;
     width: 0.7em;
-    opacity: 0.6;
+    opacity: 0.4;
+    transition: 0.3s all;
   }
   .Header-menu ul li a:hover img {
-    opacity: 1;
+    opacity: 0.8;
+  }
+
+  @media screen and (min-width: 768px) {
+    .Header-menu {
+      width: 40vw;
+    }
+    .Header-menu ul li {
+      margin: 1em 0;
+    }
+    .Header-menu ul li a {
+      font-size: 2em;
+    }
+    .open {
+      right: 20%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .Header-menu {
+      width: 30vw;
+    }
+    .Header-menu ul li {
+      margin: 1em 0;
+    }
+    .Header-menu ul li a {
+      font-size: 2.1em;
+    }
+    .open {
+      right: 10%;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    .Header-menu {
+      width: 25vw;
+    }
+    .Header-menu ul li {
+      margin: 1em 0;
+    }
+    .Header-menu ul li a {
+      font-size: 2.1em;
+    }
+    .open {
+      right: 6%;
+    }
   }
 </style>
 
