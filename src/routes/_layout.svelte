@@ -7,10 +7,20 @@
 
 <style>
   .background {
-    background: linear-gradient(
+    /* background: linear-gradient(
       120deg,
       rgba(128, 240, 139, 1) 0%,
       rgba(95, 223, 108, 1) 100%
+    ); */
+    /* background: linear-gradient(
+      90deg,
+      rgba(104, 217, 147, 1) 0%,
+      rgba(193, 248, 119, 1) 100%
+    ); */
+    background: linear-gradient(
+      90deg,
+      rgba(127, 240, 138, 1) 0%,
+      rgba(196, 250, 113, 1) 100%
     );
     position: fixed;
     top: 0;
@@ -25,14 +35,32 @@
     min-height: 100vh;
     grid-auto-rows: max-content;
   }
+
+  .grid-index {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
 </style>
 
-<div class="background" />
+{#if segment === undefined}
+  <div class="background" />
 
-<div class="grid">
-  <Header {segment} />
-  <main>
-    <slot />
-  </main>
-  <Footer />
-</div>
+  <div class="grid-index">
+    <Header {segment} />
+    <main>
+      <slot />
+    </main>
+    <Footer {segment} />
+  </div>
+{:else}
+  <div class="background" />
+
+  <div class="grid">
+    <Header {segment} />
+    <main>
+      <slot />
+    </main>
+    <Footer {segment} />
+  </div>
+{/if}
