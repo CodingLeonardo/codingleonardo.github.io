@@ -1,112 +1,114 @@
 <script>
   export let name;
-  export let description;
   export let src;
   export let href;
+  export let linkGithub;
 
-  let loaded = false;
-
-  function load(img) {
-    img.onload = () => (loaded = true);
-  }
+  import Link from "./Link.svelte";
 </script>
 
 <style>
   .Proyecto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     width: 100%;
-    height: 15em;
-    margin: 0;
-    perspective: 1000px;
-    transition: 0.5s;
-    opacity: 0;
-  }
-  .Proyecto-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  .Proyecto-front,
-  .Proyecto-back {
-    border-radius: 0.4em;
+    max-width: 400px;
+    height: 225px;
     overflow: hidden;
-    position: absolute;
+    cursor: pointer;
+    color: #002e02;
+  }
+  .Proyecto-screen-bar {
+    height: 1.6em;
+    position: relative;
+    background: #64db51;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Proyecto-screen-bar__title {
+    font-size: 0.8em;
+  }
+  .Proyecto-screen-main {
     width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-    box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.2);
+    height: 200px;
   }
-  .Proyecto-back {
-    background-color: #f1f1f1;
-    transform: rotateY(180deg);
-  }
-  .Proyecto-front {
-    background-color: white;
-  }
-  .Proyecto:hover .Proyecto-inner {
-    transform: rotateY(180deg);
-  }
-  .Proyecto-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  .Proyecto-image img {
+  .Proyecto-screen-main img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .Proyecto-title {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-    z-index: 10;
-    height: 30%;
+  .Proyecto-options {
     width: 100%;
-    background: white;
-  }
-  .Proyecto-title h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  .Proyecto-description {
-    height: 100%;
+    height: 200px;
+    transition: transform 0.3s;
+    backdrop-filter: blur(3px);
+    background: rgba(172, 252, 121, 0.9);
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 0.5em;
+    justify-content: center;
   }
-  .Proyecto-description p {
-    font-weight: bold;
+  .Proyecto-options .options {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
-  .loaded {
+  .Proyecto-options .options a {
+    margin-bottom: 1.2em;
+    margin-top: 1em;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #002e02;
+    display: flex;
+    align-items: center;
+  }
+  .Proyecto-options .options a:last-child {
+    font-size: 1em;
+    margin: 0;
+  }
+  .Proyecto-options .options img {
+    margin-left: 0.2em;
+    opacity: 0.4;
+    transition: 0.5s;
+  }
+  .Proyecto-options .options a:hover img {
     opacity: 1;
+  }
+  .Proyecto-options .options a:last-child {
+    color: #377225;
+  }
+  .Proyecto:hover .Proyecto-options {
+    transform: translateY(-200px);
   }
 </style>
 
-<a {href} class="Proyecto" class:loaded target="_blank">
-  <div class="Proyecto-inner">
-    <div class="Proyecto-front">
-      <div class="Proyecto-title">
-        <h1>{name}</h1>
-      </div>
-      <div class="Proyecto-image">
-        <img use:load {src} alt={name} />
-      </div>
-    </div>
-    <div class="Proyecto-back">
-      <div class="Proyecto-description">
-        <p>{description}</p>
-      </div>
+<div class="Proyecto">
+  <div class="Proyecto-screen-bar">
+    <div class="Proyecto-screen-bar__title">{name}</div>
+  </div>
+  <div class="Proyecto-screen-main">
+    <img {src} alt={name} />
+  </div>
+  <div class="Proyecto-options">
+    <div class="options">
+      <Link
+        name="Codigo"
+        src="github"
+        href={linkGithub}
+        textDecoration="none" />
+      <a {href} target="_blank">
+        Vista previa en vivo
+        <img
+          src="./images/menu-arrow.svg"
+          alt="Preview arrow"
+          class="options__icon" />
+      </a>
+      <a href=".">
+        Aprende más...
+        <img
+          src="./images/project-arrow.svg"
+          alt="Learn more arrow"
+          class="options__icon" />
+      </a>
     </div>
   </div>
-</a>
+</div>
