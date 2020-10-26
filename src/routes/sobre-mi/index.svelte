@@ -33,6 +33,15 @@
   .AboutMe-text p:last-child{
     margin-top: 1em;
   }
+  .AboutMe a{
+    transition: 0.5s;
+    font-size: 1.2em;
+    text-decoration-color: #007706;
+  }
+
+  .AboutMe a:hover{
+    text-decoration-color: #002E02;
+  }
 </style>
 
 <svelte:head>
@@ -61,7 +70,7 @@
     </ul>
     <h1>¿Quieres hablar?</h1>
     <div class="AboutMe-text">
-      <p>Si desea ponerse en contacto o hablar sobre un proyecto, no dude en comunicarse conmigo por correo electrónico a <a href="mailto:codingleonardo@gmail.com">codingleonardo@gmai.com</a></p>
+      <p>Si desea ponerse en contacto o hablar sobre un proyecto, no dude en comunicarse conmigo por correo electrónico a <a href="mailto:codingleonardo@gmail.com">codingleonardo@gmail.com</a></p>
       <p>También puedes enviarme un DM en las redes sociales.</p>
     </div>
   </div>

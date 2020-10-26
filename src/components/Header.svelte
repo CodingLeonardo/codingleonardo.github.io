@@ -249,8 +249,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-index', duration: 500 }}
+            out:send={{ key: 'button-index', duration: 500 }}>
             <i />
             <i />
             <i />
@@ -259,8 +259,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-index', duration: 500 }}
+            out:send={{ key: 'button-index', duration: 500 }}>
             <i class="special" />
             <i class="special" />
           </div>
@@ -324,8 +324,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-about-me', duration: 500 }}
+            out:send={{ key: 'button-about-me', duration: 500 }}>
             <i />
             <i />
             <i />
@@ -334,8 +334,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-about-me', duration: 500 }}
+            out:send={{ key: 'button-about-me', duration: 500 }}>
             <i class="special" />
             <i class="special" />
           </div>
@@ -398,8 +398,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-other', duration: 500 }}
+            out:send={{ key: 'button-other', duration: 500 }}>
             <i />
             <i />
             <i />
@@ -408,8 +408,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-other', duration: 500 }}
+            out:send={{ key: 'button-other', duration: 500 }}>
             <i class="special" />
             <i class="special" />
           </div>
@@ -474,8 +474,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-project', duration: 500 }}
+            out:send={{ key: 'button-project', duration: 500 }}>
             <i />
             <i />
             <i />
@@ -484,8 +484,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-project', duration: 500 }}
+            out:send={{ key: 'button-project', duration: 500 }}>
             <i class="special" />
             <i class="special" />
           </div>
@@ -548,8 +548,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-projects', duration: 500 }}
+            out:send={{ key: 'button-projects', duration: 500 }}>
             <i />
             <i />
             <i />
@@ -558,8 +558,8 @@
           <div
             on:click={handleClick}
             class="Header-button__burger"
-            in:receive={{ key: 'button', duration: 500 }}
-            out:send={{ key: 'button', duration: 500 }}>
+            in:receive={{ key: 'button-projects', duration: 500 }}
+            out:send={{ key: 'button-projects', duration: 500 }}>
             <i class="special" />
             <i class="special" />
           </div>

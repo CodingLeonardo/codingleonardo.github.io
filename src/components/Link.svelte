@@ -15,7 +15,8 @@
   }
 
   .Link span {
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 1em;
     text-transform: capitalize;
   }
 

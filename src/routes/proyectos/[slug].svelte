@@ -16,9 +16,9 @@
 
 <style>
   .Proyecto p {
-    font-size: 1em;
+    font-size: 1.25em;
     color: #002e02;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 1em;
   }
   .live-preview {
@@ -50,7 +50,7 @@
     margin-left: 0.5em;
   }
   .Proyecto-images {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 2em;
   }
@@ -84,7 +84,7 @@
   }
   .about p {
     color: #002e02;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.2em;
     margin-left: 0.8em;
     margin-top: 0.8em;
@@ -116,7 +116,7 @@
   .tecnologies p {
     margin: 0;
     margin-left: 0.5em;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.2em;
   }
 </style>
