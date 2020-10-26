@@ -3,11 +3,22 @@
   import Footer from "../components/Footer.svelte";
 
   import { stores } from "@sapper/app";
+
+  const getSlug = () => {
+    let slug;
+    if($page.params === undefined){
+      slug = ""
+      } else{
+      slug = $page.params.slug
+    }
+    return slug
+  }
+
   const { page } = stores();
 
-  let slug;
+  let slug = "";
 
-  $: slug = $page.params.slug;
+  $: slug = getSlug();
 
   export let segment;
 </script>
