@@ -1,4 +1,10 @@
 <script>
+  export let segment;
+  export let slug;
+  import { flip } from "svelte/animate";
+  import proyectos from "../routes/proyectos/_proyectos.js";
+  import { fade, slide } from "../utils/transitions.js";
+  import { send, receive } from "../utils/crossfade.js";
   let OpenedMenu = false;
 
   const handleClick = () => {
@@ -18,32 +24,76 @@
 <style>
   .Header {
     position: relative;
+    top: 0;
     z-index: 5;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
     height: 5em;
     color: #002e02;
   }
+  .container-header {
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    flex-wrap: inherit;
+    height: inherit;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .container-header:nth-child(2) {
+    display: none;
+  }
   .Header-logo {
-    display: block;
+    display: flex;
+    align-items: center;
     height: 100%;
+    width: 100%;
   }
   .Header-logo a {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    margin: 0;
     text-decoration: none;
   }
   .Header-logo span {
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: 900;
     margin-left: 0.5em;
   }
   .Header-logo img {
-    height: 3em;
+    height: 2.8em;
+  }
+  .Header-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  .Header-text h1 {
+    font-weight: 900;
+    text-transform: capitalize;
+  }
+  .Header-about-me {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 1.2em;
+  }
+  .Header-about-me span {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.7em;
+    line-height: 1.2em;
+  }
+  .Header-about-me h1 {
+    font-size: 2em;
+    font-weight: 800;
   }
   .Header-button {
     position: relative;
@@ -60,15 +110,21 @@
   }
 
   .Header-button__burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
     height: 60%;
     width: 100%;
     cursor: pointer;
   }
   .Header-button__burger i {
     display: block;
-    height: 5px;
+    height: 6px;
     width: inherit;
     background: #002e02;
+    border-radius: 0.8em;
   }
   .Header-button__burger i:nth-child(2) {
     margin: 25.3% 0;
@@ -78,12 +134,6 @@
   }
   .Header-button__burger i.special {
     transform: rotate(-45deg) translate(0px, 0px);
-  }
-  .show {
-    display: block;
-  }
-  .hide {
-    display: none;
   }
   .Header-menu__container {
     position: absolute;
@@ -128,6 +178,7 @@
   }
   .Header-menu ul li a {
     font-size: 2.2em;
+    font-weight: 700;
     text-decoration: none;
   }
   .Header-menu ul li a img {
@@ -185,62 +236,376 @@
 </style>
 
 <header class="Header">
-  <div class="container">
-    <div class="Header-logo">
-      <a href=".">
-        <img src="./logo.svg" alt="" />
-        <span>CodingLeonardo</span>
-      </a>
-    </div>
-    <div class="Header-button" class:open={OpenedMenu}>
-      <!-- ☰ -->
-      <div on:click={handleClick} class="Header-button__burger">
-        {#if !OpenedMenu}
-          <i />
-          <i />
-          <i />
-        {:else}
-          <i class="special" />
-          <i class="special" />
-        {/if}
+  {#if segment === undefined}
+    <div class="container-header">
+      <div class="Header-logo">
+        <a href="/">
+          <img src="/logo.svg" alt="" />
+          <span>CodingLeonardo</span>
+        </a>
       </div>
-    </div>
-    <div
-      class="Header-menu__container"
-      class:show={OpenedMenu}
-      class:hide={!OpenedMenu}>
-      <div class="Header-menu__overlay" on:click={handleClickOverlay}>
-        {#if OpenedMenu}
-          <div class="Header-menu">
-            <ul>
-              <li>
-                <a href="/sobre-mi">
-                  Sobre mi
-                  <img src="./images/menu-arrow.svg" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="/certificados">
-                  Certificados
-                  <img src="./images/menu-arrow.svg" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="/habilidades">
-                  Habilidades
-                  <img src="./images/menu-arrow.svg" alt="" />
-                </a>
-              </li>
-              <li>
-                <a href="/proyectos">
-                  Proyectos
-                  <img src="./images/menu-arrow.svg" alt="" />
-                </a>
-              </li>
-            </ul>
+      <div class="Header-button" class:open={OpenedMenu}>
+        {#if !OpenedMenu}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i />
+            <i />
+            <i />
+          </div>
+        {:else}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i class="special" />
+            <i class="special" />
           </div>
         {/if}
       </div>
+      {#if OpenedMenu}
+        <div class="Header-menu__container">
+          <div
+            class="Header-menu__overlay"
+            on:click={handleClickOverlay}
+            in:fade={{ duration: 500, delay: 200 }}
+            out:fade={{ duration: 500, delay: 400 }}>
+            <div
+              class="Header-menu"
+              in:slide={{ duration: 500, delay: 400 }}
+              out:slide={{ duration: 500, delay: 200 }}>
+              <ul>
+                <li>
+                  <a href="/sobre-mi" on:click={handleClick}>
+                    Sobre mi
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/certificados" on:click={handleClick}>
+                    Certificados
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/habilidades" on:click={handleClick}>
+                    Habilidades
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/proyectos" on:click={handleClick}>
+                    Proyectos
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {/if}
     </div>
-  </div>
+  {:else if segment === 'sobre-mi'}
+    <div class="container-header">
+      <div class="Header-logo">
+        <a href="/">
+          <img src="/logo.svg" alt="" />
+        </a>
+        <div class="Header-about-me">
+          <span>Sobre mi</span>
+          <h1>Leonardo Rivero</h1>
+        </div>
+      </div>
+      <div class="Header-button" class:open={OpenedMenu}>
+        {#if !OpenedMenu}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i />
+            <i />
+            <i />
+          </div>
+        {:else}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i class="special" />
+            <i class="special" />
+          </div>
+        {/if}
+      </div>
+      {#if OpenedMenu}
+        <div class="Header-menu__container">
+          <div
+            class="Header-menu__overlay"
+            on:click={handleClickOverlay}
+            in:fade={{ duration: 500, delay: 200 }}
+            out:fade={{ duration: 500, delay: 400 }}>
+            <div
+              class="Header-menu"
+              in:slide={{ duration: 500, delay: 400 }}
+              out:slide={{ duration: 500, delay: 200 }}>
+              <ul>
+                <li>
+                  <a href="/sobre-mi" on:click={handleClick}>
+                    Sobre mi
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/certificados" on:click={handleClick}>
+                    Certificados
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/habilidades" on:click={handleClick}>
+                    Habilidades
+                    <img src="./images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/proyectos" on:click={handleClick}>
+                    Proyectos
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {/if}
+    </div>
+  {:else if segment === 'certificados' || segment === 'habilidades'}
+    <div class="container-header">
+      <div class="Header-logo">
+        <a href="/">
+          <img src="/logo.svg" alt="" />
+        </a>
+        <div class="Header-text">
+          <h1>{segment}</h1>
+        </div>
+      </div>
+      <div class="Header-button" class:open={OpenedMenu}>
+        {#if !OpenedMenu}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i />
+            <i />
+            <i />
+          </div>
+        {:else}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i class="special" />
+            <i class="special" />
+          </div>
+        {/if}
+      </div>
+      {#if OpenedMenu}
+        <div class="Header-menu__container">
+          <div
+            class="Header-menu__overlay"
+            on:click={handleClickOverlay}
+            in:fade={{ duration: 500, delay: 200 }}
+            out:fade={{ duration: 500, delay: 400 }}>
+            <div
+              class="Header-menu"
+              in:slide={{ duration: 500, delay: 400 }}
+              out:slide={{ duration: 500, delay: 200 }}>
+              <ul>
+                <li>
+                  <a href="/sobre-mi" on:click={handleClick}>
+                    Sobre mi
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/certificados" on:click={handleClick}>
+                    Certificados
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/habilidades" on:click={handleClick}>
+                    Habilidades
+                    <img src="./images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/proyectos" on:click={handleClick}>
+                    Proyectos
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {/if}
+    </div>
+  {:else if slug}
+    <div class="container-header">
+      <div class="Header-logo">
+        <a href="/">
+          <img src="/logo.svg" alt="" />
+        </a>
+        <div class="Header-text">
+          <h1>
+            {proyectos.filter(proyecto => proyecto.slug === slug)[0].name}
+          </h1>
+        </div>
+      </div>
+      <div class="Header-button" class:open={OpenedMenu}>
+        {#if !OpenedMenu}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i />
+            <i />
+            <i />
+          </div>
+        {:else}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i class="special" />
+            <i class="special" />
+          </div>
+        {/if}
+      </div>
+      {#if OpenedMenu}
+        <div class="Header-menu__container">
+          <div
+            class="Header-menu__overlay"
+            on:click={handleClickOverlay}
+            in:fade={{ duration: 500, delay: 200 }}
+            out:fade={{ duration: 500, delay: 400 }}>
+            <div
+              class="Header-menu"
+              in:slide={{ duration: 500, delay: 400 }}
+              out:slide={{ duration: 500, delay: 200 }}>
+              <ul>
+                <li>
+                  <a href="/sobre-mi" on:click={handleClick}>
+                    Sobre mi
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/certificados" on:click={handleClick}>
+                    Certificados
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/habilidades" on:click={handleClick}>
+                    Habilidades
+                    <img src="./images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/proyectos" on:click={handleClick}>
+                    Proyectos
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {/if}
+    </div>
+  {:else}
+    <div class="container-header">
+      <div class="Header-logo">
+        <a href="/">
+          <img src="/logo.svg" alt="" />
+        </a>
+        <div class="Header-text">
+          <h1>Proyectos</h1>
+        </div>
+      </div>
+      <div class="Header-button" class:open={OpenedMenu}>
+        {#if !OpenedMenu}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i />
+            <i />
+            <i />
+          </div>
+        {:else}
+          <div
+            on:click={handleClick}
+            class="Header-button__burger"
+            in:receive={{ key: 'button', duration: 500 }}
+            out:send={{ key: 'button', duration: 500 }}>
+            <i class="special" />
+            <i class="special" />
+          </div>
+        {/if}
+      </div>
+      {#if OpenedMenu}
+        <div class="Header-menu__container">
+          <div
+            class="Header-menu__overlay"
+            on:click={handleClickOverlay}
+            in:fade={{ duration: 500, delay: 200 }}
+            out:fade={{ duration: 500, delay: 400 }}>
+            <div
+              class="Header-menu"
+              in:slide={{ duration: 500, delay: 400 }}
+              out:slide={{ duration: 500, delay: 200 }}>
+              <ul>
+                <li>
+                  <a href="/sobre-mi" on:click={handleClick}>
+                    Sobre mi
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/certificados" on:click={handleClick}>
+                    Certificados
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/habilidades" on:click={handleClick}>
+                    Habilidades
+                    <img src="./images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/proyectos" on:click={handleClick}>
+                    Proyectos
+                    <img src="/images/menu-arrow.svg" alt="" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {/if}
+    </div>
+  {/if}
 </header>

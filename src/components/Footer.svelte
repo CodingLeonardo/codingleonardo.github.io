@@ -18,10 +18,6 @@
     font-weight: 900;
     font-size: 18px;
   }
-  .Footer.index span {
-    font-weight: normal;
-    font-size: 1.1em;
-  }
   .Footer.index {
     flex-direction: row;
   }
@@ -50,7 +46,7 @@
         src="instagram"
         href="https://www.instagram.com/codingleonardo" />
       <Link
-        name="Github"
+        name="GitHub"
         src="github"
         href="https://github.com/CodingLeonardo" />
     </div>

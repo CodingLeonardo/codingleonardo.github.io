@@ -16,7 +16,7 @@ const habilidades = {
     },
     {
       name: "Svelte",
-      src: "./images/svelte-logo.svg",
+      src: "./images/svelte.svg",
       background: "#F8F8F8",
     },
     {

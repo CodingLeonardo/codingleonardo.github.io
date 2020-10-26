@@ -2,6 +2,13 @@
   import Header from "../components/Header.svelte";
   import Footer from "../components/Footer.svelte";
 
+  import { stores } from "@sapper/app";
+  const { page } = stores();
+
+  let slug;
+
+  $: slug = $page.params.slug;
+
   export let segment;
 </script>
 
@@ -57,7 +64,7 @@
   <div class="background" />
 
   <div class="grid">
-    <Header {segment} />
+    <Header {segment} {slug} />
     <main>
       <slot />
     </main>

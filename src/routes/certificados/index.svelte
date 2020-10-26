@@ -3,7 +3,6 @@
   import IntersectionObserver from "../../components/IntersectionObserver.svelte";
   import { writable, readable } from "svelte/store";
   import certificados from "./_certificados.js";
-  console.log(certificados);
 
   const certificadosFiltered = writable(certificados);
 

@@ -2,7 +2,6 @@
   import Habilidad from "../../components/Habilidad.svelte";
 
   import habilidades from "./_habilidades.js";
-  console.log(habilidades);
 </script>
 
 <style>

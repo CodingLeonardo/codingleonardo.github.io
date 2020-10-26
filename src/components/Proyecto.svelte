@@ -1,8 +1,8 @@
 <script>
   export let name;
-  export let src;
   export let href;
   export let linkGithub;
+  export let slug;
 
   import Link from "./Link.svelte";
 </script>
@@ -23,18 +23,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 1em 1em 0 0;
   }
   .Proyecto-screen-bar__title {
     font-size: 0.8em;
+    font-weight: 900;
   }
   .Proyecto-screen-main {
     width: 100%;
     height: 200px;
+    border-radius: 0 0 1em 1em;
+    overflow: hidden;
   }
   .Proyecto-screen-main img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
   }
   .Proyecto-options {
     width: 100%;
@@ -45,6 +50,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0 0 1em 1em;
+    overflow: hidden;
   }
   .Proyecto-options .options {
     display: flex;
@@ -86,7 +93,7 @@
     <div class="Proyecto-screen-bar__title">{name}</div>
   </div>
   <div class="Proyecto-screen-main">
-    <img {src} alt={name} />
+    <img src={`/images/${slug}-1.png`} alt={name} />
   </div>
   <div class="Proyecto-options">
     <div class="options">
@@ -102,7 +109,7 @@
           alt="Preview arrow"
           class="options__icon" />
       </a>
-      <a href=".">
+      <a href={`./proyectos/${slug}`}>
         Aprende más...
         <img
           src="./images/project-arrow.svg"

@@ -47,6 +47,7 @@
   }
   .Home-link span {
     font-size: 1em;
+    font-weight: 700;
   }
   .Home-link img {
     height: 0.9em;
