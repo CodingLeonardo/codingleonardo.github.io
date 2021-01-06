@@ -1,0 +1,25 @@
+.background {
+  background: linear-gradient(
+    90deg,
+    rgba(127, 240, 138, 1) 0%,
+    rgba(196, 250, 113, 1) 100%
+  );
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -100;
+}
+.grid {
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  grid-auto-rows: max-content;
+}
+
+.grid-index {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}

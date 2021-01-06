@@ -1,0 +1,28 @@
+.Footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 4em;
+  color: #002e02;
+  background: #88ff92;
+}
+.Footer span {
+  font-weight: 900;
+  font-size: 18px;
+}
+.Footer.index {
+  flex-direction: row;
+}
+
+.Footer.index span {
+  font-weight: 700;
+}
+
+.Footer-social {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

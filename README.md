@@ -13,6 +13,5 @@
 # QUE HACER ✍️
 
 - [x] Carga perezosa y desenfoque de imágenes usando lazysizes
-- [ ] Añadir modo oscuro
 - [ ] CSS de resaltado de carga diferida (verifique si vale la pena)
 - [ ] Traducciones a otros idiomas?

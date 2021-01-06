@@ -1,0 +1,39 @@
+.AboutMe {
+  padding: 2em 0;
+  color: #002e02;
+  font-weight: 500;
+}
+.AboutMe p {
+  font-size: 1.2em;
+}
+.AboutMe h1 {
+  margin: 0.5em 0;
+  font-weight: bold;
+  font-size: 2.3em;
+}
+.AboutMe ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+.AboutMe li {
+  display: flex;
+  align-items: center;
+}
+.AboutMe span {
+  margin-left: 0.8em;
+  font-weight: 500;
+  font-size: 1.7em;
+}
+.AboutMe-text p:last-child {
+  margin-top: 1em;
+}
+.AboutMe a {
+  transition: 0.5s;
+  font-size: 1.3em;
+  text-decoration-color: #007706;
+}
+
+.AboutMe a:hover {
+  text-decoration-color: #002e02;
+}
