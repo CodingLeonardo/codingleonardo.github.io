@@ -1,7 +1,7 @@
-var ghpages = require("gh-pages");
+var ghpages = require("gh-pages")
 
 ghpages.publish(
-  "__sapper__/export",
+  "public",
   {
     branch: "master",
     repo: "https://github.com/CodingLeonardo/codingleonardo.github.io.git",
@@ -11,6 +11,6 @@ ghpages.publish(
     },
   },
   () => {
-    console.log("Deploy Complete!");
+    console.log("Deploy Complete!")
   }
-);
+)

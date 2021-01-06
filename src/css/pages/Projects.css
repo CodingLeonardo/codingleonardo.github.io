@@ -1,0 +1,10 @@
+.Projects {
+  padding: 2em;
+}
+.Projects-container {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}

@@ -1,0 +1,113 @@
+.ProjectPage p {
+  font-size: 1.25em;
+  color: #002e02;
+  font-weight: 700;
+  margin-top: 1em;
+}
+.live-preview {
+  display: inline-block;
+  color: #002e02;
+  background: linear-gradient(95.66deg, #88ff92 2.51%, #c4fa71 98.07%);
+  font-weight: 900;
+  text-decoration: none;
+  padding: 1em 1.5em;
+  border-radius: 0.8em;
+  margin-top: 1em;
+  margin-right: 1em;
+  transition: 0.5s;
+}
+
+.live-preview:hover {
+  transform: scale(1.1);
+}
+
+.code {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: black;
+  font-weight: 900;
+  text-decoration: none;
+  padding: 1em 1.5em;
+  border-radius: 0.8em;
+  margin-top: 1em;
+  transition: 0.5s;
+}
+.code img {
+  height: 1.5em;
+  margin-left: 0.5em;
+}
+.code:hover {
+  transform: scale(1.1);
+}
+.ProjectPage-images {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+.ProjectPage-screen-bar {
+  height: 2.5em;
+  position: relative;
+  background: #64db51;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5em 0.5em 0 0;
+}
+.ProjectPage-screen-bar__title {
+  font-size: 1.2em;
+  font-weight: 900;
+}
+.ProjectPage-screen-main {
+  width: 100%;
+  border-radius: 0 0 0.5em 0.5em;
+  overflow: hidden;
+}
+.ProjectPage-screen-main img {
+  width: 100%;
+  border-radius: 0 0 0.5em 0.5em;
+}
+.about h1 {
+  color: #002e02;
+  font-weight: 900;
+  font-size: 2.5em;
+  margin-top: 1em;
+}
+.about p {
+  color: #002e02;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-left: 0.8em;
+  margin-top: 0.8em;
+}
+.tecnologies {
+  margin-bottom: 0.8em;
+}
+.tecnologies h1 {
+  color: #002e02;
+  font-weight: 900;
+  font-size: 2.5em;
+  margin-top: 0.5em;
+}
+.tecnologies ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-left: 0.8em;
+  margin-top: 0.8em;
+}
+.tecnologies li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+.tecnologies img {
+  height: 1.8em;
+}
+.tecnologies p {
+  margin: 0;
+  margin-left: 0.5em;
+  font-weight: 500;
+  font-size: 1.2em;
+}

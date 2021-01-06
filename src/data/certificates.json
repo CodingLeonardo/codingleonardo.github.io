@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Programacion Basica",
+    "src": "ProgBasica",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Marca Personal",
+    "src": "MarcaPersonal",
+    "categorie": "Marketing"
+  },
+  {
+    "name": "Desarrollo Web Online",
+    "src": "DevWeb",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Responsive Design",
+    "src": "ResponsiveDesign",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Git y Github",
+    "src": "GitAndGithub",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "CSS Grid Layout",
+    "src": "CSSGrid",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Fundamentos de Javascript",
+    "src": "FundamentosJs",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Ecmascipt 6+",
+    "src": "ES6",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Motor V8 de Chrome",
+    "src": "V8Chrome",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Javacript Profesional",
+    "src": "JsProfesional",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "SPA Javacript",
+    "src": "SpaJs",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Webpack",
+    "src": "Webpack",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "PostCSS",
+    "src": "PostCSS",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Animaciones Web",
+    "src": "AnimationWeb",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Prework",
+    "src": "Prework",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "React",
+    "src": "React",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "React Router y Redux",
+    "src": "RouterAndRedux",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "NextJS",
+    "src": "NextJs",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "GraphQL",
+    "src": "GraphQl",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "TailwindCSS",
+    "src": "TailwindCSS",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Backend con NodeJS",
+    "src": "NodeJs",
+    "categorie": "Programacion"
+  },
+  {
+    "name": "Hablar en Publico",
+    "src": "HablarPublico",
+    "categorie": "CrecimientoProfesional"
+  },
+  {
+    "name": "Storytelling",
+    "src": "StoryTelling",
+    "categorie": "CrecimientoProfesional"
+  },
+  {
+    "name": "Arquitecto Frontend",
+    "src": "ArquitectoFrontend",
+    "categorie": "Programacion"
+  }
+]
