@@ -36,6 +36,20 @@ a {
   color: #002e02;
 }
 
+body::-webkit-scrollbar {
+  width: 1.2em;
+}
+
+body::-webkit-scrollbar-track {
+  background: #7ff08a;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #002e02;
+  border-radius: 2em;
+  border: 0.3em solid #7ff08a;
+}
+
 code {
   font-family: menlo, inconsolata, monospace;
   font-size: calc(1em - 2px);
