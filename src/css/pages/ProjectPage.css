@@ -98,6 +98,9 @@
   margin-top: 0.8em;
 }
 .tecnologies li {
+  overflow: hidden;
+}
+.tecnologies li div {
   display: flex;
   align-items: center;
   margin-bottom: 0.5em;

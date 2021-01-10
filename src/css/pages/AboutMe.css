@@ -17,6 +17,9 @@
   list-style: none;
 }
 .AboutMe li {
+  overflow: hidden;
+}
+.AboutMe li div {
   display: flex;
   align-items: center;
 }

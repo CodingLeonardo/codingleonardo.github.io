@@ -33,7 +33,6 @@ const Certificates = ({ data }) => {
     if (event.target.attributes[0].value === "Todos") {
       setCertificatesFiltered(certificates)
     }
-    console.log(certificatesFiltered)
   }
   return (
     <>

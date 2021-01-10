@@ -1,4 +1,5 @@
 import React from "react"
+import { useSpring, useTrail, animated } from "react-spring"
 
 import SEO from "../components/Seo.js"
 import Layout from "../components/Layout.js"
@@ -11,6 +12,35 @@ import NodeJSIcon from "../images/nodejs-icon.svg"
 import "../css/pages/AboutMe.css"
 
 const AboutMe = () => {
+  const stack = [
+    {
+      name: "MongoDB",
+      img: MongoDBIcon,
+    },
+    {
+      name: "Express",
+      img: ExpressIcon,
+    },
+    {
+      name: "React",
+      img: ReactIcon,
+    },
+    {
+      name: "NodeJs",
+      img: NodeJSIcon,
+    },
+  ]
+  const fadeIn = useSpring({
+    config: {
+      delay: 500,
+    },
+    opacity: 1,
+    from: { opacity: 0 },
+  })
+  const animationTrial = useTrail(stack.length, {
+    from: { opacity: 0, transform: "translateY(100%)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+  })
   return (
     <>
       <SEO lang="es" title="Sobre mi" />
@@ -18,33 +48,27 @@ const AboutMe = () => {
       <Layout>
         <div className="AboutMe">
           <div className="container">
-            <p>
+            <animated.p style={fadeIn}>
               Soy un desarrollador de Venezuela, me apasiona el desarrollo
               frontend, me gusta estar constantemente explorando y aprendiendo
               nuevas tecnologías web. Y me gusta usar mis conocimientos para
               ayudar a personas a resolver sus problemas cuando sea posible.
-            </p>
+            </animated.p>
             <h1>Mi Stack</h1>
             <ul>
-              <li>
-                <img src={MongoDBIcon} alt="" />
-                <span>MongoDB</span>
-              </li>
-              <li>
-                <img src={ExpressIcon} alt="" />
-                <span>Express</span>
-              </li>
-              <li>
-                <img src={ReactIcon} alt="" />
-                <span>React</span>
-              </li>
-              <li>
-                <img src={NodeJSIcon} alt="" />
-                <span>NodeJS</span>
-              </li>
+              {animationTrial.map((spring, index) => {
+                return (
+                  <li key={index}>
+                    <animated.div style={spring}>
+                      <img src={stack[index].img} alt="" />
+                      <span>{stack[index].name}</span>
+                    </animated.div>
+                  </li>
+                )
+              })}
             </ul>
-            <h1>¿Quieres hablar?</h1>
-            <div className="AboutMe-text">
+            <animated.h1 style={fadeIn}>¿Quieres hablar?</animated.h1>
+            <animated.div style={fadeIn} className="AboutMe-text">
               <p>
                 Si desea ponerse en contacto o hablar sobre un proyecto, no dude
                 en comunicarse conmigo por correo electrónico a{" "}
@@ -53,7 +77,7 @@ const AboutMe = () => {
                 </a>
               </p>
               <p>También puedes enviarme un DM en las redes sociales.</p>
-            </div>
+            </animated.div>
           </div>
         </div>
       </Layout>

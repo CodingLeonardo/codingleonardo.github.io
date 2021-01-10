@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { useSpring, animated } from "react-spring"
 
 import SEO from "../components/Seo.js"
 import Layout from "../components/Layout.js"
@@ -10,6 +11,13 @@ import "../css/pages/Projects.css"
 const Projects = ({ data }) => {
   const imagesData = data.allFile.edges
   const projectsData = data.allProjectsJson.edges
+  const fadeIn = useSpring({
+    config: {
+      delay: 500,
+    },
+    opacity: 1,
+    from: { opacity: 0 },
+  })
   return (
     <>
       <SEO lang="es" title="Proyectos" />
@@ -17,7 +25,7 @@ const Projects = ({ data }) => {
       <Layout>
         <div className="Projects">
           <div className="container">
-            <div className="Projects-container">
+            <animated.div style={fadeIn} className="Projects-container">
               {projectsData.map(({ node }, key) => {
                 const regex = new RegExp(`${node.slug}`)
                 const imagesDataFiltered = imagesData.filter(({ node }) => {
@@ -37,7 +45,7 @@ const Projects = ({ data }) => {
                   />
                 )
               })}
-            </div>
+            </animated.div>
           </div>
         </div>
       </Layout>

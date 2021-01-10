@@ -23,17 +23,24 @@
 .Home-Profile__image img {
   width: 100%;
 }
-.Home-Profile h1 {
+.Home-Profile__title,
+.Home-Profile__subtitle,
+.Home-link {
+  overflow: hidden;
+}
+.Home-Profile__title h1 {
   margin-top: 0.8em;
   font-weight: 900;
   font-size: 40px;
+  text-align: center;
 }
-.Home-Profile h3 {
+.Home-Profile__subtitle h3 {
   margin-top: 0.8em;
   font-weight: bold;
   font-size: 22px;
+  text-align: center;
 }
-.Home-link {
+.Home-link a {
   display: inline-flex;
   align-items: center;
   margin-top: 1.5em;

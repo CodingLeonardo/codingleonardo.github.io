@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import { useSpring, useTransition, animated } from "react-spring"
 
 import Logo from "../images/logo.svg"
 import ArrowProject from "../images/menu-arrow.svg"
@@ -8,6 +9,26 @@ import "../css/components/Header.css"
 
 const Header = () => {
   const [openedMenu, setOpenedMenu] = useState(false)
+  const fadeIn = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  })
+  const transitionsMenuContainer = useTransition(openedMenu, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: {
+      duration: 500,
+    },
+  })
+  const transitionsMenu = useTransition(openedMenu, false, {
+    from: { transform: "translateX(1000px)" },
+    enter: { transform: "translateX(0)" },
+    leave: { transform: "translateX(1000px)" },
+    config: {
+      delay: 500,
+    },
+  })
   const projectsData = useStaticQuery(graphql`
     {
       allProjectsJson {
@@ -43,7 +64,7 @@ const Header = () => {
 
   const getTextHeader = () => {
     const regex = new RegExp(/\/proyectos\/(.*)/)
-    if (url === "/sobre-mi") {
+    if (url === "/sobre-mi" || url === "/sobre-mi/") {
       return (
         <>
           <Link to="/">
@@ -56,7 +77,7 @@ const Header = () => {
         </>
       )
     }
-    if (url === "/proyectos") {
+    if (url === "/proyectos" || url === "/proyectos/") {
       return (
         <>
           <Link to="/">
@@ -68,7 +89,7 @@ const Header = () => {
         </>
       )
     }
-    if (url === "/habilidades") {
+    if (url === "/habilidades" || url === "/habilidades/") {
       return (
         <>
           <Link to="/">
@@ -80,7 +101,7 @@ const Header = () => {
         </>
       )
     }
-    if (url === "/certificados") {
+    if (url === "/certificados" || url === "/certificados/") {
       return (
         <>
           <Link to="/">
@@ -93,10 +114,11 @@ const Header = () => {
       )
     }
     if (url.match(regex)) {
-      const slug = url.replace("/proyectos/", "")
+      const slug = url.replace("/proyectos/", "").replace("/", "")
       const name = projectsData.filter(({ node }) => {
         return node.slug === slug
-      })[0].node.name
+      })[0]?.node.name
+
       return (
         <>
           <Link to="/">
@@ -118,7 +140,7 @@ const Header = () => {
   }
 
   return (
-    <header className="Header">
+    <animated.header style={fadeIn} className="Header">
       <div className="container-header">
         <div className="Header-logo">{getTextHeader()}</div>
         <div className="Header-button">
@@ -136,42 +158,61 @@ const Header = () => {
             </div>
           )}
         </div>
-        {openedMenu && (
-          <div className="Header-menu__container">
-            <div className="Header-menu__overlay" onClick={handleClickOverlay}>
-              <div className="Header-menu">
-                <ul>
-                  <li>
-                    <Link to="/sobre-mi" onClick={handleClick}>
-                      Sobre mi
-                      <img src={ArrowProject} alt="" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/certificados" onClick={handleClick}>
-                      Certificados
-                      <img src={ArrowProject} alt="" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/habilidades" onClick={handleClick}>
-                      Habilidades
-                      <img src={ArrowProject} alt="" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/proyectos" onClick={handleClick}>
-                      Proyectos
-                      <img src={ArrowProject} alt="" />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        {transitionsMenuContainer.map(
+          ({ item, key, props }) =>
+            item && (
+              <animated.div
+                key={key}
+                style={props}
+                className="Header-menu__container"
+              >
+                <div
+                  className="Header-menu__overlay"
+                  onClick={handleClickOverlay}
+                >
+                  {transitionsMenu.map(
+                    ({ item, key, props }) =>
+                      item && (
+                        <animated.div
+                          key={key}
+                          style={props}
+                          className="Header-menu"
+                        >
+                          <ul>
+                            <li>
+                              <Link to="/sobre-mi" onClick={handleClick}>
+                                Sobre mi
+                                <img src={ArrowProject} alt="" />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/certificados" onClick={handleClick}>
+                                Certificados
+                                <img src={ArrowProject} alt="" />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/habilidades" onClick={handleClick}>
+                                Habilidades
+                                <img src={ArrowProject} alt="" />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/proyectos" onClick={handleClick}>
+                                Proyectos
+                                <img src={ArrowProject} alt="" />
+                              </Link>
+                            </li>
+                          </ul>
+                        </animated.div>
+                      )
+                  )}
+                </div>
+              </animated.div>
+            )
         )}
       </div>
-    </header>
+    </animated.header>
   )
 }
 
