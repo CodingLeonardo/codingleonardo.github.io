@@ -4,6 +4,7 @@ import { useSpring, useTrail, animated } from "react-spring"
 
 import Sapper from "../images/sapper.svg"
 import Svelte from "../images/svelte.svg"
+import NodeJS from "../images/nodejs-icon.svg"
 
 import SEO from "../components/Seo.js"
 import Layout from "../components/Layout.js"
@@ -52,6 +53,7 @@ const ProjectPage = ({ pageContext }) => {
   const imgTecnologies = {
     Sapper: Sapper,
     Svelte: Svelte,
+    NodeJS: NodeJS,
   }
 
   const getSrcImgTecnologies = tecnologie => {

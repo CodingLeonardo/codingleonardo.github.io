@@ -1,0 +1,9 @@
+{
+  "name": "JSCritty",
+  "description": "🚀 El CLI que le permite cambiar su configuración de Alacritty con un comando sin editar el archivo de configuración.",
+  "about": "¡Cambie su configuración de alacritty sobre la marcha!",
+  "href": "https://github.com/CodingLeonardo/jscritty#readme",
+  "linkGithub": "https://github.com/CodingLeonardo/jscritty",
+  "slug": "jscritty",
+  "tecnologies": ["NodeJS"]
+}
