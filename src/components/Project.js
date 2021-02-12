@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 import LinkUI from "./Link.js"
@@ -7,55 +6,46 @@ import LinkUI from "./Link.js"
 import ProjectArrow from "../images/project-arrow.svg"
 import MenuArrow from "../images/menu-arrow.svg"
 
-import "../css/components/Project.css"
+import {
+  ProjectContainer,
+  ProjectMain,
+  ProjectScreenBar,
+  ProyectOptions,
+  ProjectLink,
+  ProjectLinkA,
+} from "../styles/components/Project.styles.js"
 
 const Project = props => {
   return (
-    <div className="Project">
-      <div className="Project-screen-bar">
-        <div className="Project-screen-bar__title">{props.name}</div>
-      </div>
-      <div className="Project-screen-main">
+    <ProjectContainer>
+      <ProjectScreenBar>
+        <h1>{props.name}</h1>
+      </ProjectScreenBar>
+      <ProjectMain>
         <Img
           fluid={props.images[0].node.childImageSharp.fluid}
           alt={props.name}
         />
-      </div>
-      <div className="Project-options">
+      </ProjectMain>
+      <ProyectOptions className="Project-options">
         <div className="options">
           <LinkUI
             name="Codigo"
             href={props.linkGithub}
             textDecoration="none"
-            fontSize={1.1}
+            fontSize={1.2}
           />
-          <a
-            href={props.href}
-            target="_blank"
-            rel="noreferrer"
-            className="Project-options__link"
-          >
+          <ProjectLinkA href={props.href} target="_blank" rel="noreferrer">
             Vista previa en vivo
-            <img
-              src={MenuArrow}
-              alt="Preview arrow"
-              className="options__icon"
-            />
-          </a>
-          <Link
-            to={`/proyectos/${props.slug}`}
-            className="Project-options__link"
-          >
+            <img src={MenuArrow} alt="Preview arrow" />
+          </ProjectLinkA>
+          <ProjectLink to={`/proyectos/${props.slug}`}>
             Ver más...
-            <img
-              src={ProjectArrow}
-              alt="Learn more arrow"
-              className="options__icon"
-            />
-          </Link>
+            <img src={ProjectArrow} alt="Learn more arrow" />
+          </ProjectLink>
         </div>
-      </div>
-    </div>
+      </ProyectOptions>
+    </ProjectContainer>
   )
 }
 

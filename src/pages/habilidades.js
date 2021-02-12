@@ -19,7 +19,7 @@ const Skills = ({ data }) => {
     <>
       <SEO lang="es" title="Habilidades" />
 
-      <Layout>
+      <Layout location="/habilidades">
         <animated.div style={fadeIn} className="Skills">
           <h1>Lenguajes</h1>
           <div className="Skills-container">

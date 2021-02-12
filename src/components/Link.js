@@ -7,7 +7,7 @@ import Github from "../images/github.svg"
 
 import LinkImg from "../images/link.svg"
 
-import "../css/components/Link.css"
+import { LinkContainer, LinkIcon } from "../styles/components/Link.styles.js"
 
 const Link = props => {
   const imgs = {
@@ -25,22 +25,19 @@ const Link = props => {
   }
 
   return (
-    <a
+    <LinkContainer
       target="_blank"
       rel="noreferrer"
       href={props.href}
-      className="Link"
-      style={{
-        textDecoration: props.textDecoration,
-        fontSize: `${props.fontSize}em`,
-      }}
+      textDecoration={props.textDecoration}
+      fontSize={props.fontSize}
     >
       <span>{props.name}</span>
-      <div className="Link__icon">
-        <img className="Link__icon-link" src={LinkImg} alt="" />
+      <LinkIcon>
+        <img className="Link-img" src={LinkImg} alt="" />
         <img src={getSrcImg(props.name)} alt="" />
-      </div>
-    </a>
+      </LinkIcon>
+    </LinkContainer>
   )
 }
 

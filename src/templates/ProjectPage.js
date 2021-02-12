@@ -14,8 +14,9 @@ import Img from "gatsby-image"
 
 import "../css/pages/ProjectPage.css"
 
-const ProjectPage = ({ pageContext }) => {
+const ProjectPage = ({ pageContext, location }) => {
   const { project } = pageContext
+
   const fadeIn = useSpring({
     config: {
       delay: 500,
@@ -66,10 +67,10 @@ const ProjectPage = ({ pageContext }) => {
     <>
       <SEO lang="es" title={project.name} />
 
-      <Layout>
-        <animated.div style={fadeIn} className="ProjectPage">
+      <Layout location={location.pathname}>
+        <div className="ProjectPage">
           <div className="container">
-            <div style={fadeIn}>
+            <div>
               <p>{project.description}</p>
               <a
                 className="live-preview"
@@ -109,23 +110,20 @@ const ProjectPage = ({ pageContext }) => {
             <div className="tecnologies">
               <h1>Tecnologias</h1>
               <ul>
-                {animationTrial.map((spring, index) => {
+                {project.tecnologies.map((tecnologie, key) => {
                   return (
-                    <li key={index}>
-                      <animated.div style={spring}>
-                        <img
-                          src={getSrcImgTecnologies(project.tecnologies[index])}
-                          alt=""
-                        />
-                        <p>{project.tecnologies[index]}</p>
-                      </animated.div>
+                    <li key={key}>
+                      <div>
+                        <img src={getSrcImgTecnologies(tecnologie)} alt="" />
+                        <p>{tecnologie}</p>
+                      </div>
                     </li>
                   )
                 })}
               </ul>
             </div>
           </div>
-        </animated.div>
+        </div>
       </Layout>
     </>
   )

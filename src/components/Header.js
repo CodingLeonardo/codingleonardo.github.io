@@ -1,34 +1,27 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { useSpring, useTransition, animated } from "react-spring"
 
-import Logo from "../images/logo.svg"
+import LogoBrand from "../images/logo.svg"
 import ArrowProject from "../images/menu-arrow.svg"
 
-import "../css/components/Header.css"
+import {
+  HeaderContainer,
+  LogoContainer,
+  MenuButton,
+  ButtonBurger,
+  Menu,
+  MenuOverlay,
+  MenuContainer,
+  MenuLink,
+  MenuUl,
+  Logo,
+  LogoText,
+} from "../styles/components/Header.styles.js"
 
-const Header = () => {
+import { ContainerFluid } from "../styles/shared/utils.js"
+
+const Header = ({ location }) => {
   const [openedMenu, setOpenedMenu] = useState(false)
-  const fadeIn = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-  })
-  const transitionsMenuContainer = useTransition(openedMenu, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: {
-      duration: 500,
-    },
-  })
-  const transitionsMenu = useTransition(openedMenu, false, {
-    from: { transform: "translateX(1000px)" },
-    enter: { transform: "translateX(0)" },
-    leave: { transform: "translateX(1000px)" },
-    config: {
-      delay: 500,
-    },
-  })
   const projectsData = useStaticQuery(graphql`
     {
       allProjectsJson {
@@ -48,11 +41,8 @@ const Header = () => {
   `).allProjectsJson.edges
 
   const handleClick = () => {
-    if (openedMenu === true) {
-      setOpenedMenu(false)
-    } else {
-      setOpenedMenu(true)
-    }
+    setOpenedMenu(!openedMenu)
+    document.body.classList.toggle("overflow--hidden")
   }
   const handleClickOverlay = event => {
     if (event.target.classList[0] === "Header-menu__overlay") {
@@ -60,159 +50,116 @@ const Header = () => {
     }
   }
 
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
+  const routes = {
+    "/sobre-mi": "Sobre mi",
+    "/proyectos": "Proyectos",
+    "/habilidades": "Habilidades",
+    "/certificados": "Certificados",
+  }
 
-  const getTextHeader = () => {
+  const HeaderText = () => {
     const regex = new RegExp(/\/proyectos\/(.*)/)
-    if (url === "/sobre-mi" || url === "/sobre-mi/") {
+
+    const SubComponent = ({ title }) => (
+      <>
+        <Logo to="/">
+          <img src={LogoBrand} alt="" />
+        </Logo>
+        <LogoText>
+          <h1>{title}</h1>
+        </LogoText>
+      </>
+    )
+
+    if (location === "/sobre-mi") {
       return (
         <>
-          <Link to="/">
-            <img src={Logo} alt="" />
-          </Link>
-          <div className="Header-about-me">
+          <Logo to="/">
+            <img src={LogoBrand} alt="" />
+          </Logo>
+          <LogoText isAboutMe={true}>
             <span>Sobre mi</span>
             <h1>Leonardo Rivero</h1>
-          </div>
+          </LogoText>
         </>
       )
     }
-    if (url === "/proyectos" || url === "/proyectos/") {
-      return (
-        <>
-          <Link to="/">
-            <img src={Logo} alt="" />
-          </Link>
-          <div className="Header-text">
-            <h1>Proyectos</h1>
-          </div>
-        </>
-      )
+
+    if (routes.hasOwnProperty(location)) {
+      return <SubComponent title={routes[location]} />
     }
-    if (url === "/habilidades" || url === "/habilidades/") {
-      return (
-        <>
-          <Link to="/">
-            <img src={Logo} alt="" />
-          </Link>
-          <div className="Header-text">
-            <h1>Habilidades</h1>
-          </div>
-        </>
-      )
-    }
-    if (url === "/certificados" || url === "/certificados/") {
-      return (
-        <>
-          <Link to="/">
-            <img src={Logo} alt="" />
-          </Link>
-          <div className="Header-text">
-            <h1>Certificados</h1>
-          </div>
-        </>
-      )
-    }
-    if (url.match(regex)) {
-      const slug = url.replace("/proyectos/", "").replace("/", "")
+
+    if (location.match(regex)) {
+      const slug = location.replace("/proyectos/", "").replace("/", "")
       const name = projectsData.filter(({ node }) => {
         return node.slug === slug
       })[0]?.node.name
 
-      return (
-        <>
-          <Link to="/">
-            <img src={Logo} alt="" />
-          </Link>
-          <div className="Header-text">
-            <h1>{name}</h1>
-          </div>
-        </>
-      )
-    } else {
-      return (
-        <Link to="/">
-          <img src={Logo} alt="" />
-          <span>CodingLeonardo</span>
-        </Link>
-      )
+      return <SubComponent title={name} />
     }
+
+    return (
+      <Logo to="/">
+        <img src={LogoBrand} alt="Logo" />
+        <span>CodingLeonardo</span>
+      </Logo>
+    )
   }
 
   return (
-    <animated.header style={fadeIn} className="Header">
-      <div className="container-header">
-        <div className="Header-logo">{getTextHeader()}</div>
-        <div className="Header-button">
-          {openedMenu && (
-            <div onClick={handleClick} className="Header-button__burger">
-              <i className="special" />
-              <i className="special" />
-            </div>
-          )}
-          {!openedMenu && (
-            <div onClick={handleClick} className="Header-button__burger">
-              <i />
-              <i />
-              <i />
-            </div>
-          )}
-        </div>
-        {transitionsMenuContainer.map(
-          ({ item, key, props }) =>
-            item && (
-              <animated.div
-                key={key}
-                style={props}
-                className="Header-menu__container"
-              >
-                <div
-                  className="Header-menu__overlay"
-                  onClick={handleClickOverlay}
-                >
-                  {transitionsMenu.map(
-                    ({ item, key, props }) =>
-                      item && (
-                        <animated.div
-                          key={key}
-                          style={props}
-                          className="Header-menu"
-                        >
-                          <ul>
-                            <li>
-                              <Link to="/sobre-mi" onClick={handleClick}>
-                                Sobre mi
-                                <img src={ArrowProject} alt="" />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/certificados" onClick={handleClick}>
-                                Certificados
-                                <img src={ArrowProject} alt="" />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/habilidades" onClick={handleClick}>
-                                Habilidades
-                                <img src={ArrowProject} alt="" />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/proyectos" onClick={handleClick}>
-                                Proyectos
-                                <img src={ArrowProject} alt="" />
-                              </Link>
-                            </li>
-                          </ul>
-                        </animated.div>
-                      )
-                  )}
-                </div>
-              </animated.div>
-            )
-        )}
-      </div>
-    </animated.header>
+    <HeaderContainer>
+      <ContainerFluid>
+        <LogoContainer>
+          <HeaderText />
+        </LogoContainer>
+        <MenuButton>
+          <ButtonBurger
+            onClick={handleClick}
+            onKeyPress={handleClick}
+            role="button"
+            tabIndex="0"
+            aria-label="Toggle Menu"
+          >
+            <i />
+            <i />
+            <i />
+          </ButtonBurger>
+        </MenuButton>
+
+        <MenuContainer isOpened={openedMenu}>
+          <MenuOverlay isOpened={openedMenu}>
+            <Menu>
+              <ul style={MenuUl}>
+                <MenuLink>
+                  <Link to="/sobre-mi" onClick={handleClick}>
+                    Sobre mi
+                    <img src={ArrowProject} alt="" />
+                  </Link>
+                </MenuLink>
+                <MenuLink>
+                  <Link to="/certificados" onClick={handleClick}>
+                    Certificados
+                    <img src={ArrowProject} alt="" />
+                  </Link>
+                </MenuLink>
+                <MenuLink>
+                  <Link to="/habilidades" onClick={handleClick}>
+                    Habilidades
+                    <img src={ArrowProject} alt="" />
+                  </Link>
+                </MenuLink>
+                <MenuLink>
+                  <Link to="/proyectos" onClick={handleClick}>
+                    Proyectos
+                    <img src={ArrowProject} alt="" />
+                  </Link>
+                </MenuLink>
+              </ul>
+            </Menu>
+          </MenuOverlay>
+        </MenuContainer>
+      </ContainerFluid>
+    </HeaderContainer>
   )
 }
 

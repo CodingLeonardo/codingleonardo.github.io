@@ -4,25 +4,25 @@ import PropTypes from "prop-types"
 import Header from "./Header.js"
 import Footer from "./Footer.js"
 
-import "../css/global.css"
-import "../css/components/Layout.css"
+import { Background, Grid } from "../styles/shared/utils.js"
 
-const Layout = ({ children }) => {
+const Layout = ({ location, children }) => {
   return (
     <>
-      <div className="background" />
+      <Background />
 
-      <div className="grid-index">
-        <Header />
+      <Grid>
+        <Header location={location} />
         <main>{children}</main>
-        <Footer />
-      </div>
+        <Footer location={location} />
+      </Grid>
     </>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.string.isRequired,
 }
 
 export default Layout

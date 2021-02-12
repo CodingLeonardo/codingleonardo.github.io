@@ -38,7 +38,7 @@ const Certificates = ({ data }) => {
     <>
       <SEO lang="es" title="Certificados" />
 
-      <Layout>
+      <Layout location="/certificados">
         <div className="Certificates">
           <div className="Certificates-buttons">
             <button categorie="Todos" onClick={handleClick}>

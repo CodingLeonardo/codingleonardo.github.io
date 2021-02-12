@@ -25,7 +25,7 @@ import HablarPublico from "../images/diploma-hablar-en-publico.svg"
 import StoryTelling from "../images/diploma-storytelling.svg"
 import ArquitectoFrontend from "../images/diploma-arquitecto.svg"
 
-import "../css/components/Certificate.css"
+import { CertificateContainer } from "../styles/components/Certificate.styles.js"
 
 const Certificate = props => {
   const imgs = {
@@ -61,9 +61,9 @@ const Certificate = props => {
     }
   }
   return (
-    <div className="Certificate" categories={props.categories}>
+    <CertificateContainer categories={props.categories}>
       <img src={getSrcImg(props.src)} alt={props.name} />
-    </div>
+    </CertificateContainer>
   )
 }
 
